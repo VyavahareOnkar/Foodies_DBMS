@@ -8,7 +8,7 @@ const session = require('express-session');
 
 // Load Express to out app
 const app = express();
-const port = 80;
+const port = process.env.PORT || 8000;
 var totalBill = 0;
 var itemList = {};
 
@@ -181,6 +181,6 @@ app.get('/construction', (req, res) => {
     res.status(200).render('construction.pug');
 })
 
-app.listen(process.env.PORT || port, () => {
+app.listen(port, () => {
     console.log(`Server started at port ${port}`);
 });
