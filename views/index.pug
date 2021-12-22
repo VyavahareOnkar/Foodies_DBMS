@@ -1,0 +1,128 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  meta(name='description' content="This is a Ecommerce Website for Online Shopping of Vegetables, Grocerries and Fruits created by three B-Tech Students of SGGS Nanded.")
+
+  title Best Online Food Delivery Service in India | MyOnlineMeal.com
+  link(rel='icon' href='../static/images/home/favicon.ico' type='image/x-icon')
+  link(href='https://fonts.googleapis.com/css?family=Baloo+Bhai|Bree+Serif&display=swap' rel='stylesheet' defer)
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' integrity='sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z' crossorigin='anonymous' defer)
+  link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css' defer)
+  link(rel='stylesheet' href='../static/css/indexstyle.css')
+  link(rel='stylesheet' media='screen and (max-width: 1170px)' href='../static/css/phone.css')
+
+  script(src="../static/javascript/cut_btn.js" defer) 
+
+nav#navbar
+  #logo
+    img(src='../static/images/logos/logos.jpg' alt='MyOnlineMeal.com')
+  ul
+    li.item
+      a(href='/home') Home
+    li.item
+      a(href='/home#services-container') Services
+    li.item
+      a(href='/home#contact') Contact Us
+    li.item
+      a(href='/payment') Payment Options
+section#home
+  h1.h-primary Welcome to MyOnlineVegies
+  p
+    | We have got the large number of items, select of your choice, add to cart and order!
+  p
+    strong Authentic and Natural
+  button#shadow.btn
+    a(href='/home#orders') Order Now
+section#order-content
+  h1.order-heading.center Choose your section
+  #orders
+    div
+      a(href='/vegetables')
+        img#id_1.box(src='../static/images/category images/icon-2_80x80.png' alt='Vegetables.logo')
+    div
+      a(href='/groceries')
+        img#id_2.box(src='../static/images/category images/icon-4_80x80.png' alt='Groceries.logo')
+    div
+      a(href='/fruits')
+        img#id_3.box(src='../static/images/category images/icon-5_80x80.png' alt='Fruits.logo')
+    div
+      a(href='/construction')
+        img#id_4.box(src='../static/images/category images/icon-6_80x80.png' alt='Milk.logo')
+    div
+      a(href='/construction')
+        img#id_5.box(src='../static/images/category images/icon-1_80x80.png' alt='Egg.logo')
+    div
+      a(href='/construction')
+        img#id_6.box(src='../static/images/category images/icon-3_80x80.png' alt='Meat.logo')
+section#services-container
+  h1.h-primary.center Our Services
+  #services(loading="lazy")
+    .box
+      img(src='../static/images/home/1.png' alt='')
+      h2.h-secondary.center Food Catering
+      p.center
+        | Looking for a perfect food affair to complement your special occasion?
+        | Look no further! Our Caterering service provide a sumptuous food itinerary to fulfill
+        | your each and every catering need. Be it a large, mid or small sized event,
+        | our full-range of outdoor and indoor catering services cover complete food
+        | preparation and presentation for formal and informal gatherings.
+    .box
+      img(src='../static/images/home/2.png' alt='')
+      h2.h-secondary.center Bulk Ordering
+      p.center
+        | From an array of food items to choose from, Our Caterering service bring to you the
+        | best from all cuisines to suit your event, tastes and pockets even. So while
+        | you leave your food worries to us, we let you enjoy those special moments
+        | in all the glory. So let the celebrations begin!!
+    .box
+      img(src='../static/images/home/3.png' alt='')
+      h2.h-secondary.center Food Ordering
+      p.center
+        | Our Caterering service serve you the best with the best to serve. From birthday parties,
+        | corporate seminars to weddings and related functions, we give you a range of
+        | food items to choose for your occasion. Just go through our website select items, add to cart
+        | then order! We will home deliever you at the next instance.
+
+section#contact
+  if successes
+    for success in successes
+      div.alert_block
+        div.alert-success #{ success }
+          span#cut X
+  if errors
+    for error, i in errors
+      div.alert_block
+        div.alert-danger #{ error }
+          span#cut X
+
+  h1.h-primary.center Contact Us
+  #contact-box
+    form#myform(name='contact-form' action='/contact' method='post')
+      .form-group
+        label(for='name') Name: 
+        input#name(type='text' name='name' placeholder='Enter your Name' required='')
+      .form-group
+        label(for='email') Email: 
+        input#email(type='email' name='email' placeholder='Enter your Email Address' required='')
+      .form-group
+        label(for='phone') Contact Number: 
+        input#contact(type='phone' name='contact' placeholder='Enter your Contact Number' required='')
+      .form-group
+        label(for='message') Message: 
+        textarea#message(name='message' cols='30' rows='8' required='')
+      .form-group.btn-container
+        button#liveAlertBtn.btn.btn-outline-dark Submit
+section.footer
+  h1.credit
+    | created by 
+    span Foodies
+    |  |&copy; all rights reserved.
+  .icons
+    a.fab.fa-facebook-f(href='https://hi-in.facebook.com/sanket.ghormode.31' target='_blank' rel="noopener")
+    a.fab.fa-twitter(href='https://twitter.com/aw_santo' target='_blank' rel="noopener")
+    a.fab.fa-instagram(href='https://www.instagram.com/aman_khan0_o/' target='_blank' rel="noopener")
+    a.fab.fa-github(href='https://github.com/VyavahareOnkar' target='_blank' rel="noopener")
+    a.fab.fa-linkedin(href='https://www.linkedin.com/in/onkar-vyavahare-7a42ba1a5/' target='_blank' rel="noopener")
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p' crossorigin='anonymous')

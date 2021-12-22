@@ -1,0 +1,75 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(name='description' content="This is a Ecommerce Website for Online Shopping of Vegetables, Grocerries and Fruits created by three B-Tech Students of SGGS Nanded.")
+  
+  title Payment Form
+  link(rel='icon' href='../static/images/home/favicon.ico' type='image/x-icon')
+  link(rel='stylesheet' href='../static/css/design.css')
+  script(src="../static/javascript/cut_btn.js" defer='')
+
+.container
+  if successes
+    for success in successes
+      div.alert_block
+        div.alert-success #{ success }
+          span#cut X
+  if errors
+    for error, i in errors
+      div.alert_block
+        div.alert-danger #{ error }
+          span#cut X
+
+  form(action='/payment' method='post')
+    h1.Mainheading Payment Form
+    p
+      marquee Required fields are noted by *
+    h2 Contact Information
+    p 
+      | Total Bill : &#x20B9;
+      input(type=text placeholder=bill disabled='')
+
+    p 
+      | Items in the Cart :
+      textarea(type=text placeholder=cartlist disabled='')
+    p
+      | Name: *
+      input(type='text' name='name' required='' placeholder='Enter full name')
+    fieldset
+      legend Gender
+      p
+        | Male 
+        input#Male(type='radio' name='Gender')
+        br
+        |           Female 
+        input#Female(type='radio' name='Gender')
+    p
+      | Address: *
+      textarea#address(name='address' cols='100' rows='4' required='')
+    p
+      | Email: *
+      input#email(type='email' name='email' required='')
+    p
+      | Pincode: 
+      input#pincode(type='number' name='pincode')
+    hr
+    h2 Payment Information
+    p
+      | Select Card Type:*
+      select#card_type(name='card_type' required='')
+        option(value='') --Select a Card Type
+        option(value='visa') visa
+        option(value='mastercard') mastercard
+        option(value='rupay') rupay
+    p
+      | Card Number:* 
+      input#cardno(type='text' name='cardno' placeholder='1111-2222-3333' required='')
+    p
+      | Expiration Date: *
+      input#exp_date(type='date' name='exp_date' required='')
+    p
+      | CVV: *
+      input#cvv(type='password' name='cvv' placeholder='123' required='')
+    input(type='submit' value='PayNow')

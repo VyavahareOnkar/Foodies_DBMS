@@ -1,0 +1,281 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(name='description' content="This is a Ecommerce Website for Online Shopping of Vegetables, Grocerries and Fruits created by three B-Tech Students of SGGS Nanded.")  
+
+  title Buy Fruits at Foodies | Fresh &amp; Best fruits in City
+  link(rel='shortcut icon' href='../static/images/home/favicon.ico' type='image/x-icon')
+  //-Google Fonts
+  link(href='https://fonts.googleapis.com/css?family=Baloo+Bhai|Bree+Serif&display=swap' rel='stylesheet')
+  link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css')
+  //-Bootstrap Components
+  script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
+
+  //-Internal JavaScript
+  script(src='/static/javascript/item_cart.js' defer='')
+
+  //-Internal CSS
+  link(rel='stylesheet' href='../static/css/fruits.css')
+  
+body
+#buyModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#buyModalLabel.cart-modal-title Cart Buy
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      #cart-modal-body.modal-body
+        p.first Buy All Items in the Cart?
+        p.second Buy All Items in the Cart?
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+        button.btn.btn-primary(type='button')
+          a(href='/payment' style='text-decoration: none;color:black') Buy
+
+#cartModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='cartModalLabel' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#item-modal-title.modal-title Item Added to Cart.
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      #item-modal-body.modal-body
+        | Item successfully added to cart!
+        | Please continue your shopping.
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+
+nav#navbar
+
+  #logo
+    img(src='../static/images/logos/logos.jpg' alt='MyOnlineMeal.com')
+  ul
+    li.item
+      a(href='/home') Home
+    li.item
+      a(href='/home#services-container') Services
+    li.item
+      a(href='/home#contact') Contact Us
+    li.item
+      a(href='/payment') Payment Options
+
+section#home
+  h1.h-primary Buy Fresh and Juicy Fruits
+  p
+    | We have got the large number of items, select of your choice, add to cart and order! All items at fair and reasonable prices.
+  p
+    strong Authentic and Natural
+  button.btn-a(data-toggle='modal' data-target='#buyModal') Buy Items in Cart
+
+section#order-content
+  h1.order-heading.center Pick your items
+  #orders
+    .box
+      img(src='../static/images/fruits/apple.jpg' alt='Apple.logo')
+      h2.order-heading-secondary Apple
+      p.center
+        | One serving, or one medium apple, provides about 95 calories.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 80 per kg
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='apple')
+        input.hidden(name='price' value='80')
+        button#apple.btn.item-btn.btn-outline-danger(value='80' data-toggle='modal' data-target='#cartModal')
+          | Add to
+          | Cart
+    .box
+      img(src='../static/images/fruits/banana.jpg' alt='Banana.logo')
+      h2.order-heading-secondary Banana
+      p.center
+        | Bananas are a healthy source of fiber, potassium, vitamin B6, vitamin C.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 30 per dozen
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='banana')
+        input.hidden(name='price' value='30')
+        button#banana.btn.item-btn.btn-outline-danger(type='submit' value='30' data-toggle='modal' data-target='#cartModal')
+          | Add to
+          | Cart
+    .box
+      img(src='../static/images/fruits/guava.jpg' alt='Guava.logo')
+      h2.order-heading-secondary Guava
+      p.center
+        | Guava fruits are amazingly rich in antioxidants, vitamin C, potassium, and fiber.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 60 per kg
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='guava')
+        input.hidden(name='price' value='60')
+        button#guava.btn.item-btn.btn-outline-danger(value='60' data-toggle='modal' data-target='#cartModal')
+          | Add to
+          | Cart
+    .box
+      img(src='../static/images/fruits/mango.jpg' alt='Mango.logo')
+      h2.order-heading-secondary Mango
+      p.center
+        | A mango serving size is equivalent to 3/4 cup of sliced mangos and is just 70
+        | calories.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 200 per kg
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='mango')
+        input.hidden(name='price' value='200')
+        button#mango.btn.item-btn.btn-outline-danger(value='200' data-toggle='modal' data-target='#cartModal')
+          | Add to
+          | Cart
+    .box
+      img(src='../static/images/fruits/orange.jpg' alt='Orange.logo')
+      h2.order-heading-secondary Orange
+      p.center
+        | Oranges are a good source of fiber and a rich source of vitamin C and folate.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 160 per kg
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='orange')
+        input.hidden(name='price' value='160')
+        button#orange.btn.item-btn.btn-outline-danger(value='160' data-toggle='modal' data-target='#cartModal')
+          | Add to
+          | Cart
+    .box
+      img(src='../static/images/fruits/pineapple.jpg' alt='Pineapple.logo')
+      h2.order-heading-secondary Pineapple
+      p.center
+        | Pineapple is a great source of vitamin C, B vitamins, fiber, and minerals like
+        | manganese.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 60 per piece
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='pineapple')
+        input.hidden(name='price' value='60')
+        button#pineapple.btn.item-btn.btn-outline-danger(value='60' data-toggle='modal' data-target='#cartModal')
+          | Add to
+          | Cart
+    .box
+      img(src='../static/images/fruits/pomegranate.jpg' alt='Pomegranate.logo')
+      h2.order-heading-secondary Pomegranate
+      p.center
+        | Their healing power have been championed for centuries. High in
+        | antioxidants and vitamin C
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 140 per kg
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='pomegranate')
+        input.hidden(name='price' value='140')
+        button#pomegranate.btn.item-btn.btn-outline-danger(value='140' data-toggle='modal' data-target='#cartModal')
+          | Add to
+          | Cart
+    .box
+      img(src='../static/images/fruits/strawberry.jpg' alt='Strawberry.logo')
+      h2.order-heading-secondary Strawberry
+      p.center
+        | Strawberries improve heart function.They are rich in antioxidants and detoxifiers.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 60 per box
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='strawberry')
+        input.hidden(name='price' value='60')
+        button#strawberry.btn.item-btn.btn-outline-danger(value='60' data-toggle='modal' data-target='#cartModal')
+          | Add to
+          | Cart
+    .box
+      img(src='../static/images/fruits/watermelon.jpg' alt='Watermelon.logo')
+      h2.order-heading-secondary Watermelon
+      p.center
+        | Watermelon is a sweet and refreshing low calorie summer snack.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 60 per piece
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='watermelon')
+        input.hidden(name='price' value='60')
+        button#watermelon.btn.item-btn.btn-outline-danger(value='60' data-toggle='modal' data-target='#cartModal')
+          | Add to
+          | Cart
+
+section.footer
+  h1.credit
+    | created by 
+    span Foodies
+    |  |&copy; all rights reserved.
+
+  .btn-for-page 
+    a(href="/groceries")
+      button.btn.btn-outline-success < Groceries
+    a(href="/vegetables")
+      button.btn.btn-outline-success Vegetables >
+
+  .icons
+    a.fab.fa-facebook-f(href='https://hi-in.facebook.com/sanket.ghormode.31' target='_blank' rel="noopener")
+    a.fab.fa-twitter(href='https://twitter.com/aw_santo' target='_blank' rel="noopener")
+    a.fab.fa-instagram(href='https://www.instagram.com/aman_khan0_o/' target='_blank' rel="noopener")
+    a.fab.fa-github(href='https://github.com/VyavahareOnkar' target='_blank' rel="noopener")
+    a.fab.fa-linkedin(href='https://www.linkedin.com/in/onkar-vyavahare-7a42ba1a5/' target='_blank' rel="noopener")
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p' crossorigin='anonymous')

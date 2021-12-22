@@ -1,0 +1,274 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  meta(name='description' content="This is a Ecommerce Website for Online Shopping of Vegetables, Grocerries and Fruits created by three B-Tech Students of SGGS Nanded.")
+  
+  title Buy Groceries at Foodies | Fresh &amp; Best groceries in City
+  link(rel='shortcut icon' href='../static/images/home/favicon.ico' type='image/x-icon')
+  //-Google Fonts
+  link(href='https://fonts.googleapis.com/css?family=Baloo+Bhai|Bree+Serif&display=swap' rel='stylesheet')
+  link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css')
+  //-Bootstrap Components
+  script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
+  link(rel='stylesheet' href='../static/css/groceries.css')
+  link(rel='stylesheet' media='screen and (max-width: 1170px)' href='../static/css/phone.css')
+  //-Internal JavaScript
+  script(src='/static/javascript/item_cart.js' defer='')
+//-Modal
+#buyModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#buyModalLabel.cart-modal-title Cart Buy
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      #cart-modal-body.modal-body
+        p.first Buy All Items in the Cart?
+        p.second Buy All Items in the Cart?
+      .modal-footer
+        button.btn-m.btn-secondary(type='button' data-dismiss='modal') Close
+        button.btn-m.btn-primary(type='button')
+          a(href='/payment' style='text-decoration: none;color:black') Buy
+          
+#cartModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='cartModalLabel' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#item-modal-title.modal-title Item Added to Cart.
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      #item-modal-body.modal-body
+        | Item successfully added to cart!
+        | Please continue your shopping.
+      .modal-footer
+        button.btn-m.btn-secondary(type='button' data-dismiss='modal') Close
+nav#navbar
+  #logo
+    img(src='../static/images/logos/logos.jpg' alt='MyOnlineMeal.com')
+  ul
+    li.item
+      a(href='/home') Home
+    li.item
+      a(href='/home#services-container') Services
+    li.item
+      a(href='/home#contact') Contact Us
+    li.item
+      a(href='/payment') Payment Options
+section#home
+  h1.h-primary Buy Groceries
+  p
+    | We have got the large number of items, select of your choice, add to cart and order! All items at fair and reasonable prices.
+  p
+    strong Authentic and Natural
+  button.btn-a(data-toggle='modal' data-target='#buyModal') Buy Items in Cart
+section#order-content
+  h1.order-heading.center Pick your items
+  #orders
+    .box
+      img(src='../static/images/grocery/almond.jpg' alt='first item')
+      h2.order-heading-secondary Almond
+      p.center
+        | almonds are a nut, but they are seeds, rather than a true nut.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 60 per kg
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='almond')
+        input.hidden(name='price' value='60')
+        button#almond.item-btn(value='60' data-toggle='modal' data-target='#cartModal')
+          | Add to
+          | Cart
+    .box
+      img(src='../static/images/grocery/brown-rice.jpg' alt='Brown-Rice.jpg')
+      h2.order-heading-secondary Brown-Rice
+      p.center
+        | Brown rice is a whole grain that contains the bran and germ.
+        .stars
+          i.fas.fa-star
+          i.fas.fa-star
+          i.fas.fa-star
+          i.fas.fa-star
+          i.fas.fa-star-half-alt
+        .price_block
+          span.currency_icon &#x20B9;
+          span.amount 40 per kg
+        form.btn-container(action='/add' method='post')
+          input.hidden(name='item' value='brown-rice')
+          input.hidden(name='price' value='40')
+          button#brown-rice.item-btn(value='40' data-toggle='modal' data-target='#cartModal')
+            | Add to
+            | Cart
+    .box
+      img(src='../static/images/grocery/butter.jpg' alt='Butter.jpg')
+      h2.order-heading-secondary Butter
+      p.center
+        | It is a high-calorie food,1 tsp of it packs about 100
+        | calories
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 25 per packet
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='butter')
+        input.hidden(name='price' value='25')
+        button#butter.item-btn(value='25' data-toggle='modal' data-target='#cartModal')
+          | Add to
+          | Cart
+    .box
+      img(src='../static/images/grocery/cheese.jpg' alt='Cheese.jpg')
+      h2.order-heading-secondary Cheese
+      p.center
+        | Cheese is a dairy product, avilable in different flavors.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 10 per piece
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='cheese')
+        input.hidden(name='price' value='10')
+        button#cheese.item-btn(value='10' data-toggle='modal' data-target='#cartModal')
+          | Add to
+          | Cart
+    .box
+      img(src='../static/images/grocery/cashews.jpg' alt='Cashews.jpg')
+      h2.order-heading-secondary Cashew
+      p.center
+        | Cashews are low in sugar, rich in fiber and plant protein.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 100 per kg
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='cashew')
+        input.hidden(name='price' value='100')
+        button#cashew.item-btn(value='100' data-toggle='modal' data-target='#cartModal')
+          | Add to
+          | Cart
+    .box
+      img(src='../static/images/grocery/bread.jpg' alt='Bread.jpg')
+      h2.order-heading-secondary Bread
+      p.center
+        | Bread is a staple food prepared from a dough of flour.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 12 per packet
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='bread')
+        input.hidden(name='price' value='12')
+        button#bread.item-btn(value='12' data-toggle='modal' data-target='#cartModal')
+          | Add
+          | to
+          | Cart
+    .box
+      img(src='../static/images/grocery/egg.jpg' alt='Egg.jpg')
+      h2.order-heading-secondary Eggs
+      p.center
+        | Eggs are among the most nutritious foods on the planet.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 72 per dozen
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='egg')
+        input.hidden(name='price' value='72')
+        button#egg.item-btn(value='72' data-toggle='modal' data-target='#cartModal')
+          | Add
+          | to
+          | Cart
+    .box
+      img(src='../static/images/grocery/wheat.jpg' alt='Wheat.jpg')
+      h2.order-heading-secondary Wheat
+      p.center
+        | Dishes of wheat are full of Vitamin and Minerals.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 40 per kg
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='wheat')
+        input.hidden(name='price' value='40')
+        button#wheat.item-btn(value='40' data-toggle='modal' data-target='#cartModal')
+          | Add
+          | to
+          | Cart
+    .box
+      img(src='../static/images/grocery/chocklate.jpg' alt='Chocolate.jpg')
+      h2.order-heading-secondary Chocklate
+      p.center
+        | Dark chocolate is touted as the healthiest of the chocolates.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 20 per packet
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='chocklate')
+        input.hidden(name='price' value='20')
+        button#chocklate.item-btn(value='20' data-toggle='modal' data-target='#cartModal')
+          | Add to
+          | Cart
+section.footer
+  h1.credit
+    | created by 
+    span Foodies
+    |  |&copy; all rights reserved.
+
+  .btn-for-page 
+    a(href="/vegetables")
+      button.btn.btn-outline-success < Vegetables
+    a(href="/fruits")
+      button.btn.btn-outline-success Fruits >
+
+  .icons
+    a.fab.fa-facebook-f(href='https://hi-in.facebook.com/sanket.ghormode.31' target='_blank' rel="noopener")
+    a.fab.fa-twitter(href='https://twitter.com/aw_santo' target='_blank' rel="noopener")
+    a.fab.fa-instagram(href='https://www.instagram.com/aman_khan0_o/' target='_blank' rel="noopener")
+    a.fab.fa-github(href='https://github.com/VyavahareOnkar' target='_blank' rel="noopener")
+    a.fab.fa-linkedin(href='https://www.linkedin.com/in/onkar-vyavahare-7a42ba1a5/' target='_blank' rel="noopener")
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p' crossorigin='anonymous')

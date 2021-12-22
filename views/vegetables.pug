@@ -1,0 +1,278 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  meta(name='description' content="This is a Ecommerce Website for Online Shopping of Vegetables, Grocerries and Fruits created by three B-Tech Students of SGGS Nanded.")
+  
+  title Best Online Food Delivery Service in India | MyOnlineMeal.com
+  link(rel='shortcut icon' href='../static/images/home/favicon.ico' type='image/x-icon')
+
+  //-External css
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
+  //-Google Fonts
+  link(href='https://fonts.googleapis.com/css?family=Baloo+Bhai|Bree+Serif&display=swap' rel='stylesheet')
+  //-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" >
+  link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css')
+  //-Bootstrap Components
+  script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous')
+  //-Internal CSS
+  link(rel='stylesheet' href='../static/css/style.css')
+  link(rel='stylesheet' media='screen and (max-width: 1170px)' href='../static/css/phone.css')
+  //-Internal JavaScript
+  script(src='/static/javascript/item_cart.js' defer='')
+//-Modal
+#buyModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#buyModalLabel.cart-modal-title Cart Buy
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      #cart-modal-body.modal-body
+        p.first Buy All Items in the Cart?
+        p.second Buy All Items in the Cart?
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+        button.btn.btn-primary(type='button')
+          a(href='/payment' style='text-decoration: none;color:black') Buy
+#cartModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='cartModalLabel' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#item-modal-title.modal-title Item Added to Cart.
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      #item-modal-body.modal-body
+        | Item successfully added to cart!
+        | Please continue your shopping.
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+nav#navbar
+  #logo
+    img(src='../static/images/logos/logos.jpg' alt='MyOnlineMeal.com')
+  ul
+    li.item
+      a(href='/home') Home
+    li.item
+      a(href='/home#services-container') Services
+    li.item
+      a(href='/home#contact') Contact Us
+    li.item
+      a(href='/payment') Payment Options
+section#home
+  h1.h-primary Buy Fresh Vegetables 
+  p
+    | We have got the large number of items, select of your choice, add to cart and order! All items at fair and reasonable prices.
+  p
+    strong Authentic and Natural
+  button.btn-a(data-toggle='modal' data-target='#buyModal') Buy Items in Cart
+section#order-content
+  h1.order-heading.center Pick your items
+  #orders
+    .box
+      img(src='../static/images/veg-images/cauliflower.jpg' alt='first item')
+      h2.order-heading-secondary Cauliflower
+      p.center
+        | Cauliflower is a cruciferous vegetable that is naturally high in fiber and B-vitamins.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 40 per kg
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='cauliflower')
+        input.hidden(name='price' value='40')
+        button#cauliflower.btn.item-btn.cart_btn(value='40' data-toggle='modal' data-target='#cartModal')
+          | Add to Cart
+    .box
+      img(src='../static/images/veg-images/corn.jpg' alt='first item')
+      h2.order-heading-secondary Corn
+      p.center
+        | Corn is a starchy vegetable that comes as kernels on a cob, covered by a husk.
+        .stars
+          i.fas.fa-star
+          i.fas.fa-star
+          i.fas.fa-star
+          i.fas.fa-star
+          i.fas.fa-star-half-alt
+        .price_block
+          span.currency_icon &#x20B9;
+          span.amount 10 per piece
+        form.btn-container(action='/add' method='post')
+          input.hidden(name='item' value='corn')
+          input.hidden(name='price' value='10')
+          button#corn.btn.item-btn(value='10' data-toggle='modal' data-target='#cartModal')
+            | Add to Cart 
+
+    .box
+      img(src='../static/images/veg-images/lemon.jpg' alt='first item')
+      h2.order-heading-secondary Lemon
+      p.center
+        | Lemons are a refreshing fruit usually not eaten whole but rather as a garnish or
+        | flavoring.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 24 per dozen
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='lemon')
+        input.hidden(name='price' value='24')
+        button#lemon.btn.item-btn(value='24' data-toggle='modal' data-target='#cartModal')
+          | Add
+          | to
+          | Cart
+    .box
+      img(src='../static/images/veg-images/dill.jpg' alt='first item')
+      h2.order-heading-secondary Dill
+      p.center
+        | Dill is a plant that is used as a cooking spice and as a fragrance
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 10 per piece
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='dill')
+        input.hidden(name='price' value='10')
+        button#dill.btn.item-btn(value='10' data-toggle='modal' data-target='#cartModal')
+          | Add
+          | to
+          | Cart
+    .box
+      img(src='../static/images/veg-images/onion.jpg' alt='first item')
+      h2.order-heading-secondary Onion
+      p.center
+        | onions are 89% water, 9% carbs, and 1.7% fiber, with tiny amounts of protein and fat.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 150 per kg
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='onion')
+        input.hidden(name='price' value='150')
+        button#onion.btn.item-btn(value='150' data-toggle='modal' data-target='#cartModal')
+          | Add to
+          | Cart
+    .box
+      img(src='../static/images/veg-images/potato.jpg' alt='first item')
+      h2.order-heading-secondary Potato
+      p.center
+        | Potatoes are a good source of several vitamins C and B6 and minerals, including
+        | potassium.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 35 per kg
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='potato')
+        input.hidden(name='price' value='35')
+        button#potato.btn.item-btn(value='35' data-toggle='modal' data-target='#cartModal')
+          | Add to
+          | Cart
+    .box
+      img(src='../static/images/veg-images/parsley.jpg' alt='first item')
+      h2.order-heading-secondary Parsley
+      p.center
+        | Parsley is often used as a garnish, but it can also enhance flavor and benefit the
+        | health.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 15 per piece
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='parsley')
+        input.hidden(name='price' value='15')
+        button#Parsley.btn.item-btn(value='15' data-toggle='modal' data-target='#cartModal')
+          | Add to
+          | Cart
+    .box
+      img(src='../static/images/veg-images/tomato.jpg' alt='first item')
+      h2.order-heading-secondary Tomato
+      p.center
+        | Tomatoes are the major dietary source of the antioxidant lycopene.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 80 per kg
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='tomato')
+        input.hidden(name='price' value='80')
+        button#tomato.btn.item-btn(value='80' data-toggle='modal' data-target='#cartModal')
+          | Add to
+          | Cart
+    .box
+      img(src='../static/images/veg-images/peas.jpg' alt='first item')
+      h2.order-heading-secondary Peas
+      p.center
+        | Peas are a good source of vitamins C and E, zinc, and other antioxidants.
+      .stars
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star
+        i.fas.fa-star-half-alt
+      .price_block
+        span.currency_icon &#x20B9;
+        span.amount 40 per kg
+      form.btn-container(action='/add' method='post')
+        input.hidden(name='item' value='peas')
+        input.hidden(name='price' value='40')
+        button#peas.btn.item-btn(value='40' data-toggle='modal' data-target='#cartModal')
+          | Add
+          | to
+          | Cart
+section.footer
+  h1.credit
+    | created by 
+    span Foodies
+    |  |&copy; all rights reserved.
+
+  .btn-for-page 
+    a(href="/fruits")
+      button.btn.btn-outline-success < Fruits
+    a(href="/groceries")
+      button.btn.btn-outline-success Groceries >
+
+  .icons
+    a.fab.fa-facebook-f(href='https://hi-in.facebook.com/sanket.ghormode.31' target='_blank' rel="noopener")
+    a.fab.fa-twitter(href='https://twitter.com/aw_santo' target='_blank' rel="noopener")
+    a.fab.fa-instagram(href='https://www.instagram.com/aman_khan0_o/' target='_blank' rel="noopener")
+    a.fab.fa-github(href='https://github.com/VyavahareOnkar' target='_blank' rel="noopener")
+    a.fab.fa-linkedin(href='https://www.linkedin.com/in/onkar-vyavahare-7a42ba1a5/' target='_blank' rel="noopener")
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p' crossorigin='anonymous')
