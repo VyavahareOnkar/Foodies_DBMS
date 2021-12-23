@@ -188,5 +188,5 @@ app.get('/construction', (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log(`Server started at port ${port}`);
+    console.log(`Server started at port https://127.0.0.1:${port}`);
 });
