@@ -14,7 +14,7 @@ const cart_uri = "mongodb+srv://aman_khan0_o:2210@user-cart.uzqba.mongodb.net/Us
 
 // Load Express to out app
 const app = express();
-const port = 80;
+const port = process.env.PORT || 8000;
 var totalBill = 0;
 var itemList = {};
 
