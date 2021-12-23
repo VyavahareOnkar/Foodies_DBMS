@@ -4,23 +4,29 @@ const mongoose = require('mongoose');
 const nodemailer = require("nodemailer");
 const flash = require('connect-flash');
 const session = require('express-session');
+// const { MongoClient } = require('mongodb');
+
+
+const contact_uri = "mongodb+srv://aman_khan0_o:2210@user-cart.uzqba.mongodb.net/ContactData?retryWrites=true&w=majority";
+
+const cart_uri = "mongodb+srv://aman_khan0_o:2210@user-cart.uzqba.mongodb.net/UserCart?retryWrites=true&w=majority";
 
 
 // Load Express to out app
 const app = express();
-const port = process.env.PORT || 8000;
+const port = 80;
 var totalBill = 0;
 var itemList = {};
 
 
 // Creating a DB for Contact Storing
-const contact_db = mongoose.createConnection('mongodb://localhost:27017/ContactData', {
+const contact_db = mongoose.createConnection(contact_uri, {
     useUnifiedTopology: true,
     useNewUrlParser: true
 });
 
 // stored in 'ContactData' database
-const ContactModel = contact_db.model('Contact_Data', new mongoose.Schema({
+const ContactModel = contact_db.model('feedback', new mongoose.Schema({
     name: String,
     contact: String,
     email: String,
@@ -35,7 +41,7 @@ contact_db.once("open", function () {
 
 
 // Creating a DB for USer's Cart Storing
-const cart_db = mongoose.createConnection('mongodb://localhost:27017/UserCart', {
+const cart_db = mongoose.createConnection(cart_uri, {
     useUnifiedTopology: true,
     useNewUrlParser: true
 });
