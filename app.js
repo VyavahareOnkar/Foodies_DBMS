@@ -14,7 +14,8 @@ const cart_uri = "mongodb+srv://aman_khan0_o:2210@user-cart.uzqba.mongodb.net/Us
 
 // Load Express to out app
 const app = express();
-const port = process.env.PORT || 8000;
+// const port = process.env.PORT || 8000;
+const port = 80;
 var totalBill = 0;
 var itemList = {};
 
@@ -188,5 +189,5 @@ app.get('/construction', (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log(`Server started at port https://127.0.0.1:${port}`);
+    console.log(`Server started at port ${port}`);
 });
